@@ -60,11 +60,3 @@ fun Splash(alpha: Float) {
         )
     }
 }
-
-@Composable
-@Preview(showBackground = true)
-fun PrevSplash() {
-    MoviesAppTheme {
-        Splash(1f)
-    }
-}
