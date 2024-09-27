@@ -22,11 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
+import coil.compose.rememberImagePainter
 import com.example.moviesapp.MainViewModel
 import com.example.moviesapp.data.models.Movies
-import coil.compose.rememberImagePainter
 import com.example.moviesapp.navigation.Screens
-import com.example.moviesapp.utils.Constants
 
 @Composable
 fun MainScreen(navController: NavController, viewModel: MainViewModel) {
@@ -35,10 +34,10 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier
                 .padding(20.dp)
-        ){
+        ) {
             items(allMovies.take(30)) { item ->
                 MovieItem(item = item, navController = navController)
             }
@@ -51,7 +50,8 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
 fun MovieItem(item: Movies, navController: NavController) {
     Card(
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp),
+            defaultElevation = 4.dp
+        ),
         modifier = Modifier
             .padding(top = 8.dp)
             .clickable {
@@ -76,21 +76,21 @@ fun MovieItem(item: Movies, navController: NavController) {
                     fontWeight = FontWeight.Bold
                 )
                 Row {
-                    Text (
+                    Text(
                         text = "Rating: ",
                         fontWeight = FontWeight.Bold
                     )
                     Text(text = item.rating.average.toString())
                 }
                 Row {
-                    Text (
+                    Text(
                         text = "Genre: ",
                         fontWeight = FontWeight.Bold
                     )
                     item.genres.take(2).forEach { Text(text = " $it ") }
                 }
                 Row {
-                    Text (
+                    Text(
                         text = "Premiered: ",
                         fontWeight = FontWeight.Bold
                     )
