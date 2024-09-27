@@ -15,6 +15,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -26,10 +27,15 @@ import coil.compose.rememberImagePainter
 import com.example.moviesapp.MainViewModel
 import com.example.moviesapp.data.models.Movies
 import com.example.moviesapp.navigation.Screens
+import kotlinx.coroutines.delay
 
 @Composable
 fun MainScreen(navController: NavController, viewModel: MainViewModel) {
     val allMovies = viewModel.allMovies.observeAsState(listOf()).value
+
+    LaunchedEffect(key1 = true) {
+        viewModel.getAllMovies()
+    }
     Surface(
         modifier = Modifier
             .fillMaxSize()
